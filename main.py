@@ -40,10 +40,22 @@ create_graph_json = {
 
 create_pixel_endpoint = f"https://pixe.la/v1/users/{pixela_username}/graphs/{create_graph_json['id']}"
 
+today = datetime.datetime.now()
+yesterday = today - datetime.timedelta(days=1)
+
 create_pixel_json = {
-    "date": datetime.datetime.now().strftime("%Y%m%d"),
-    "quantity": "10"
+    "date": yesterday.strftime("%Y%m%d"),
+    "quantity": "15"
 }
 
-create_pixel_response = requests.post(url=create_pixel_endpoint, headers=pixela_headers, json=create_pixel_json)
-print(create_pixel_response.text)
+# create_pixel_response = requests.post(url=create_pixel_endpoint, headers=pixela_headers, json=create_pixel_json)
+# print(create_pixel_response.text)
+
+update_pixel_endpoint = f"{create_pixel_endpoint}/{yesterday.strftime('%Y%m%d')}"
+
+update_pixel_json = {
+    "quantity": "5"
+}
+
+update_pixel_response = requests.put(url=update_pixel_endpoint, headers=pixela_headers, json=update_pixel_json)
+print(update_pixel_response.text)
