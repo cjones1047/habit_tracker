@@ -57,5 +57,8 @@ update_pixel_json = {
     "quantity": "5"
 }
 
-update_pixel_response = requests.put(url=update_pixel_endpoint, headers=pixela_headers, json=update_pixel_json)
-print(update_pixel_response.text)
+# update_pixel_response = requests.put(url=update_pixel_endpoint, headers=pixela_headers, json=update_pixel_json)
+# print(update_pixel_response.text)
+
+delete_pixel_response = requests.delete(url=update_pixel_endpoint, headers=pixela_headers)
+print(delete_pixel_response.text)
