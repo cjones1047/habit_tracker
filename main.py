@@ -1,6 +1,7 @@
 import os
 import dotenv
 import requests
+import datetime
 
 dotenv.load_dotenv()
 
@@ -40,8 +41,8 @@ create_graph_json = {
 create_pixel_endpoint = f"https://pixe.la/v1/users/{pixela_username}/graphs/{create_graph_json['id']}"
 
 create_pixel_json = {
-    "date": "20220320",
-    "quantity": "3"
+    "date": datetime.datetime.now().strftime("%Y%m%d"),
+    "quantity": "10"
 }
 
 create_pixel_response = requests.post(url=create_pixel_endpoint, headers=pixela_headers, json=create_pixel_json)
