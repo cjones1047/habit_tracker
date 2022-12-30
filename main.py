@@ -22,7 +22,7 @@ user_params = {
 
 graph_endpoint = f"https://pixe.la/v1/users/{pixela_username}/graphs"
 
-create_graph_headers = {
+pixela_headers = {
     "X-USER-TOKEN": pixela_user_token
 }
 
@@ -34,5 +34,15 @@ create_graph_json = {
     "color": "sora"
 }
 
-create_graph_response = requests.post(url=graph_endpoint, headers=create_graph_headers, json=create_graph_json)
-print(create_graph_response.text)
+# create_graph_response = requests.post(url=graph_endpoint, headers=pixela_headers, json=create_graph_json)
+# print(create_graph_response.text)
+
+create_pixel_endpoint = f"https://pixe.la/v1/users/{pixela_username}/graphs/{create_graph_json['id']}"
+
+create_pixel_json = {
+    "date": "20220320",
+    "quantity": "3"
+}
+
+create_pixel_response = requests.post(url=create_pixel_endpoint, headers=pixela_headers, json=create_pixel_json)
+print(create_pixel_response.text)
